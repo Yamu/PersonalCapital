@@ -5,10 +5,10 @@ target/
  
 # OS Files #
 .DS_Store
- 
-*.class
- 
+
 # Package Files #
 *.jar
 *.war
 *.ear
+*.db
+*.class
