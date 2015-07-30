@@ -12,6 +12,8 @@ import org.junit.Test;
 
 public class TestMonteCarloSim {
 	
+	private final static double CONST_GAUSS = 0.05;
+	
 	// override random number generator with fixed value
 	static class TestRandom extends Random {
 		/**	Eclipse generated serialVersionUID */
@@ -19,7 +21,7 @@ public class TestMonteCarloSim {
 
 		@Override
 		public double nextGaussian() {
-			return 0.05;
+			return CONST_GAUSS;
 		}
 	}
 	
@@ -166,6 +168,7 @@ public class TestMonteCarloSim {
 		mcSim.runSimulations(1, 10, 100);
 		List<Double> simResults = mcSim.getResults();
 
-		assertEquals(100.0 * Math.pow((1.05 + (0.1 * 0.05)) / 1.035, 10), simResults.get(0), 0.0001);
+		assertEquals(100.0 * Math.pow((1.05 + (0.1 * CONST_GAUSS)) / 1.035, 10),
+			simResults.get(0), 0.0001);
 	}
 }
